@@ -19,7 +19,7 @@ All of these blue badged icons are from this repository:
 
 Donate <img src="https://avatars0.githubusercontent.com/u/3165523" width="15" height="15"/> **Ripple** to this address:
 ```
-t1R7hecCF2kfiRVrEtnrUJZr57zKqDKRpvt
+rNEygqkMv4Vnj8M2eWnYT1TDnV1Sc1X5SN
 ```
 **Tag:** `6741151`
 
