@@ -1,0 +1,20 @@
+{
+   "background": {
+      "scripts": [ "ticker.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon19.png"
+   },
+   "description": "US DOLLAR price ticker (price taken from 'fixer.io'). Extension shows US DOLLAR value in TRY.",
+   "icons": {
+      "200": "icon200.png",
+      "19": "icon19.png"
+   },
+   "manifest_version": 2,
+   "name": "US DOLLAR price ticker",
+   "short_name": "US DOLLAR ticker",
+   "version": "0.0.1",
+    "permissions": [
+    "https://fixer.io/"
+  ]
+}

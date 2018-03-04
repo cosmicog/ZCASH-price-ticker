@@ -1,0 +1,20 @@
+{
+   "background": {
+      "scripts": [ "ticker.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon19.png"
+   },
+   "description": "RIPPLE price ticker (price taken from 'coinmarketcap.com'). Extension shows RIPPLE valued in Bitcoin and USD.",
+   "icons": {
+      "200": "icon200.png",
+      "19": "icon19.png"
+   },
+   "manifest_version": 2,
+   "name": "RIPPLE price ticker",
+   "short_name": "RIPPLE ticker",
+   "version": "0.0.1",
+    "permissions": [
+    "https://api.coinmarketcap.com/"
+  ]
+}

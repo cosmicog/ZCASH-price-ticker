@@ -1,0 +1,20 @@
+{
+   "background": {
+      "scripts": [ "ticker.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon19.png"
+   },
+   "description": "ZCASH price ticker (price taken from 'coinmarketcap.com'). Extension shows ZCASH valued in Bitcoin and USD.",
+   "icons": {
+      "128": "icon128.png",
+      "19": "icon19.png"
+   },
+   "manifest_version": 2,
+   "name": "ZCASH price ticker",
+   "short_name": "ZCASH ticker",
+   "version": "0.0.1",
+    "permissions": [
+    "https://api.coinmarketcap.com/"
+  ]
+}
