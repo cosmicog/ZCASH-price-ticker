@@ -25,16 +25,16 @@ function checkTicker()
 					var avrg=jsonresponse[i]['average']
 				}
 			}
-			chrome.browserAction.setBadgeText({text: parseFloat(ask).toFixed(2)});
+			chrome.browserAction.setBadgeText({text: parseFloat(ask).toFixed(0)});
 			var lines=["Ethereum TRY price ticker BTCTurk\n"];
-			lines.push("High: "   + parseFloat(high).toFixed(2) + " ₺\n");
-			lines.push("Low: "    + parseFloat(low ).toFixed(2) + " ₺\n");
-			lines.push("Last: "   + parseFloat(last).toFixed(2) + " ₺\n");
-			lines.push("Bid: "    + parseFloat(bid ).toFixed(2) + " ₺\n");
-			lines.push("Volume: " + parseFloat(vol ).toFixed(2) + " ₺\n");
-			lines.push("Ask: "    + parseFloat(ask ).toFixed(2) + " ₺\n");
-			lines.push("Open: "   + parseFloat(open).toFixed(2) + " ₺\n");
-			lines.push("Average " + parseFloat(avrg).toFixed(2) + " ₺\n");
+			lines.push("High: "    + parseFloat(high).toFixed(2) + " ₺\n");
+			lines.push("Low: "     + parseFloat(low ).toFixed(2) + " ₺\n");
+			lines.push("Last: "    + parseFloat(last).toFixed(2) + " ₺\n");
+			lines.push("Bid: "     + parseFloat(bid ).toFixed(2) + " ₺\n");
+			lines.push("Vol 24h: " + parseFloat(vol ).toFixed(2) + " ⧫\n");
+			lines.push("Ask: "     + parseFloat(ask ).toFixed(2) + " ₺\n");
+			lines.push("Open: "    + parseFloat(open).toFixed(2) + " ₺\n");
+			lines.push("Average "  + parseFloat(avrg).toFixed(2) + " ₺\n");
 			lines.push(Date());
 			var title_lines="";
 			for (j=0;j<lines.length;j++) 
