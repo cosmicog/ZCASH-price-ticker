@@ -42,7 +42,7 @@ function checkTicker()
 			lines.push("ETHEREUM "+FixIfNotNull(coin_usd*usd_try,4)+" ₺ \n");
 			lines.push("ETHEREUM 1h Change "+Number(coin_percent1h*usd_try).toLocaleString(window.navigator.language,options)+"\n");
 			lines.push("ETHEREUM 7d Change "+Number(coin_percent7d*usd_try).toLocaleString(window.navigator.language,options)+"\n");
-			lines.push("ETHEREUM 24h Change "+FixIfNotNull(coin_percent24h*usd_try,2)+"%\n");
+			lines.push("ETHEREUM 24h Change "+FixIfNotNull(coin_percent24h,2)+"%\n");
 			lines.push("ETHEREUM 24h Volume "+Number(coin_volume*usd_try).toLocaleString(window.navigator.language,options)+"\n");
 			lines.push("ETHEREUM Marketcap "+Number(coin_marketcap*usd_try).toLocaleString(window.navigator.language,options)+"\n");
 			lines.push("\n");
