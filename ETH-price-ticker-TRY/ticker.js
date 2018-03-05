@@ -2,19 +2,9 @@
 //edit cosmicog
 function checkTicker() 
 {
-	var usd_try;
     var ticker = new XMLHttpRequest();
-	var ticker2 = new XMLHttpRequest();
-	ticker.open("GET", "https://api.coinmarketcap.com/v1/ticker/", true);
-	ticker2.open("GET", "https://api.fixer.io/latest?base=USD", false);
-	ticker2.onreadystatechange = function() 
-	{
-		if (ticker2.readyState == 4 && ticker2.status == 200) 
-		{
-			var jsonresponse=JSON.parse(ticker2.responseText);
-			usd_try = jsonresponse['rates']['TRY']
-		}
-	}
+	ticker.open("GET", "https://www.btcturk.com/api/ticker/", true);
+	
 	ticker.onreadystatechange = function() 
 	{
 		if (ticker.readyState == 4 && ticker.status == 200) 
@@ -22,30 +12,29 @@ function checkTicker()
 			var jsonresponse=JSON.parse(ticker.responseText);
 			for (i=0;i<jsonresponse.length;i++) 
 			{
-				if (jsonresponse[i]['id']=='ethereum') 
+				if (jsonresponse[i]['pair']=='ETHTRY') 
 				{
-					//chrome.extension.getBackgroundPage().console.log(window.navigator.language);
-					var coin_btc=jsonresponse[i]['price_btc'];
-					var coin_usd=jsonresponse[i]['price_usd'];
-					var coin_percent1h=jsonresponse[i]['percent_change_1h'];
-					var coin_percent24h=jsonresponse[i]['percent_change_24h'];
-					var coin_percent7d=jsonresponse[i]['percent_change_7d'];
-					var coin_marketcap=jsonresponse[i]['market_cap_usd'];
-					var coin_volume=jsonresponse[i]['24h_volume_usd'];
+					var high=jsonresponse[i]['high'];
+					var last=jsonresponse[i]['last'];
+					var vol =jsonresponse[i]['volume'];
+					var time=jsonresponse[i]['timestamp'];
+					var bid =jsonresponse[i]['bid'];
+					var low =jsonresponse[i]['low'];
+					var ask =jsonresponse[i]['ask'];
+					var open=jsonresponse[i]['open'];
+					var avrg=jsonresponse[i]['average']
 				}
 			}
-			chrome.browserAction.setBadgeText({text: parseFloat(coin_usd*usd_try).toFixed(0)});
-			var lines=["ETHEREUM price ticker (price taken from 'www.coinmarketcap.com')\n"];
-			var options = { style: 'currency', currency: 'TRY'};
-			lines.push("\n");
-			lines.push("ETHEREUM "+FixIfNotNull(coin_btc,8)+"BTC\n");
-			lines.push("ETHEREUM "+FixIfNotNull(coin_usd*usd_try,4)+" ₺ \n");
-			lines.push("ETHEREUM 1h Change "+Number(coin_percent1h*usd_try).toLocaleString(window.navigator.language,options)+"\n");
-			lines.push("ETHEREUM 7d Change "+Number(coin_percent7d*usd_try).toLocaleString(window.navigator.language,options)+"\n");
-			lines.push("ETHEREUM 24h Change "+FixIfNotNull(coin_percent24h,2)+"%\n");
-			lines.push("ETHEREUM 24h Volume "+Number(coin_volume*usd_try).toLocaleString(window.navigator.language,options)+"\n");
-			lines.push("ETHEREUM Marketcap "+Number(coin_marketcap*usd_try).toLocaleString(window.navigator.language,options)+"\n");
-			lines.push("\n");
+			chrome.browserAction.setBadgeText({text: parseFloat(ask).toFixed(2)});
+			var lines=["Ethereum TRY price ticker BTCTurk\n"];
+			lines.push("High: "   + parseFloat(high).toFixed(2) + " ₺\n");
+			lines.push("Low: "    + parseFloat(low ).toFixed(2) + " ₺\n");
+			lines.push("Last: "   + parseFloat(last).toFixed(2) + " ₺\n");
+			lines.push("Bid: "    + parseFloat(bid ).toFixed(2) + " ₺\n");
+			lines.push("Volume: " + parseFloat(vol ).toFixed(2) + " ₺\n");
+			lines.push("Ask: "    + parseFloat(ask ).toFixed(2) + " ₺\n");
+			lines.push("Open: "   + parseFloat(open).toFixed(2) + " ₺\n");
+			lines.push("Average " + parseFloat(avrg).toFixed(2) + " ₺\n");
 			lines.push(Date());
 			var title_lines="";
 			for (j=0;j<lines.length;j++) 
@@ -55,22 +44,11 @@ function checkTicker()
 			chrome.browserAction.setTitle({title:title_lines});
 	    }
     }
-    ticker2.send();
     ticker.send();
-}
-function FixIfNotNull(variable,decimals) {
-	//Function passess variable toFixed only if it is not null (edge case)
-	//then returns fixed_var as string
-	var fixed_var="UNAVAILABLE";
-	if (variable) 
-	{
-		fixed_var=parseFloat(variable).toFixed(decimals);
-	}
-	return fixed_var.toString()
 }
 chrome.browserAction.onClicked.addListener(function(activeTab)
 {
 	checkTicker();
 });
-window.setInterval(checkTicker, 240000); //4 minutes
+window.setInterval(checkTicker, 5000); //5 seconds
 checkTicker();
